@@ -7,11 +7,13 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
+@Table(name="students")
 public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
+
     @Column(name = "studentFirstName")
     private String firstName;
     @Column(name = "studentLastName")
