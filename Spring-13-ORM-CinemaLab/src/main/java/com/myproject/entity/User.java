@@ -18,6 +18,6 @@ public class User extends BaseEntity{
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_details_id")
-    private Account accountDetails;
+    private Account account;
 
 }
