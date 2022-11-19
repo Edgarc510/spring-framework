@@ -7,6 +7,6 @@ import javax.persistence.MappedSuperclass;
 public class BaseEntity {
 
     @Id
-    private Long Id;
+    private Long id;
 
 }
