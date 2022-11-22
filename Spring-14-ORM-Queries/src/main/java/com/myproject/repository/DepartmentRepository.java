@@ -2,6 +2,7 @@ package com.myproject.repository;
 
 import com.myproject.entity.Department;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
@@ -17,7 +18,10 @@ public interface DepartmentRepository extends JpaRepository<Department,Long> {
     List<Department> findByDivisionEquals(String division);
 
     //Display top 3 departments with division includes 'Hea' without duplicates
-    List<Department>findDistinctTop3ByDivisionContains(String contains);
+    List<Department> findDistinctTop3ByDivisionContains(String contains);
+
+    @Query("SELECT  d from Department d where d.division IN ?1")
+    List<Department> getDepartmentDivision(List<String> division);
 
 
 
