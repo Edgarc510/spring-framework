@@ -3,8 +3,11 @@ package com.myproject.repository;
 import com.myproject.entity.Employee;
 import net.bytebuddy.asm.Advice;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -88,11 +91,26 @@ public interface EmployeeRepository extends JpaRepository<Employee,Long> {
     List<Employee> getEmployeeSalaryOrderAsc();
 
     //Sorting in descending order
-    @Query("SELECT e FROM Employee e ORDER BY e.salary DESC")
+    @Query("SELECT e FROM Employee e ORDER BY e.salary DESC") //positional
     List<Employee> getEmployeeSalaryOrderDesc();
 
     @Query(value = "SELECT * FROM  employees WHERE salary ?1",nativeQuery = true)//pure SQL
     List<Employee> readEmployeeDetailBySalary(int salary);
+
+    @Query("select e from Employee e where e.salary = :salary")   //named bind parameters
+    List<Employee> getEmployeeSalary(@Param("salary") int salary);
+
+    @Modifying
+    @Transactional
+    @Query("Update Employee e set e.email = 'admin@email.com' where e.id=:id")
+    void updateEmployeeJPQL(@Param("id") int id);
+
+    @Modifying
+    @Transactional
+    @Query(value = "Update employees  set email = 'admin@email.com' where id=:id", nativeQuery = true)
+    void updateEmployeeNativeQuery(@Param("id") int id);
+
+
 
 
 }
