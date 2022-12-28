@@ -24,8 +24,10 @@ public class CourseServiceImpl implements CourseService {
 
 
     @Override
-    public CourseDTO createCourse(CourseDTO courseDTO) {
-        return null;
+    public CourseDTO createCourse(CourseDTO course) {
+        courseRepository.save(mapperUtil.convert(course, new Course()));
+
+        return course;
     }
 
     @Override
@@ -50,16 +52,27 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public void updateCourse(Long courseId, CourseDTO courseDTO) {
 
-    }
+        Course course = mapperUtil.convert(courseDTO, new Course());
+
+        courseRepository.findById(courseId).ifPresent(dbCourse -> {
+            dbCourse.setName(course.getName());
+            dbCourse.setCategory(course.getCategory());
+            dbCourse.setDescription(course.getDescription());
+            dbCourse.setRating(course.getRating());
+
+            courseRepository.save(dbCourse);
+        });    }
 
     @Override
     public void deleteCourseById(long courseId) {
+
+        courseRepository.deleteById(courseId);
 
     }
 
     @Override
     public void deleteCourses() {
-
+        courseRepository.deleteAll();
     }
 
 
