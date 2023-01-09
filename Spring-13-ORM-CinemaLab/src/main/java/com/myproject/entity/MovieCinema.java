@@ -1,12 +1,16 @@
 package com.myproject.entity;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class MovieCinema extends BaseEntity{
 
@@ -20,4 +24,10 @@ public class MovieCinema extends BaseEntity{
     private Cinema cinema;
 
 
+    @Override
+    public String toString() {
+        return "MovieCinema{" +
+                "dateTime=" + dateTime +
+                '}';
+    }
 }
