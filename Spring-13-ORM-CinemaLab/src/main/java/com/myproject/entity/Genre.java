@@ -1,7 +1,9 @@
 package com.myproject.entity;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -11,7 +13,8 @@ import java.util.List;
 
 @Entity
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class Genre extends BaseEntity{
 
     private String name;
@@ -24,5 +27,10 @@ public class Genre extends BaseEntity{
 
     private List<Movie> movieList;
 
-
+    @Override
+    public String toString() {
+        return "Genre{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }
