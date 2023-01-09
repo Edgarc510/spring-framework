@@ -10,5 +10,4 @@ public class Spring16RestJacksonApplication {
         SpringApplication.run(Spring16RestJacksonApplication.class, args);
     }
 
-
 }
