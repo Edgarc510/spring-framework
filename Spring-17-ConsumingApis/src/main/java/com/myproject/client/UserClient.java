@@ -1,6 +1,6 @@
 package com.myproject.client;
 
-import com.myproject.dto.User;
+import com.myproject.entity.User;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
