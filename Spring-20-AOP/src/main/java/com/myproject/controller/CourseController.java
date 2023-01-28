@@ -24,13 +24,13 @@ public class CourseController {
     @GetMapping
     public List<CourseDTO> getAllCourses() {
 
-        logger.info("Before -> Controller: {} - Method {} "," CourseController","getCourses()");
+//        logger.info("Before -> Controller: {} - Method {} "," CourseController","getCourses()");
         List<CourseDTO> list = courseService.getCourses();
-        logger.info("After -> Controller: {} - Method : {} - Output : {}"," CourseController","getCourses()", list.toString());
+//        logger.info("After -> Controller: {} - Method : {} - Output : {}"," CourseController","getCourses()", list.toString());
         return list;
     }
 
-    @Loggable
+    @Loggable // this is my custom annotation
     @GetMapping("/{id}")
     public CourseDTO getCourseById(@PathVariable("id") Long courseId) {
         return courseService.getCourseById(courseId);
@@ -51,7 +51,6 @@ public class CourseController {
     public void updateCourse(@PathVariable("id") Long courseId, @RequestBody CourseDTO course) {
         courseService.updateCourse(courseId, course);
     }
-
     @DeleteMapping("/{id}")
     public void deleteCourseById(@PathVariable("id") Long courseId) {
         courseService.deleteCourseById(courseId);
