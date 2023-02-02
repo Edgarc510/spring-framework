@@ -8,7 +8,7 @@
         <version>2.7.6</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.cydeo</groupId>
+    <groupId>com.myproject</groupId>
     <artifactId>Spring-15-REST</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Spring-15-REST</name>
