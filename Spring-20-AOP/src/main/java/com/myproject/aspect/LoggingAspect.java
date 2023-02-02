@@ -37,20 +37,20 @@ public class LoggingAspect {
 //        logger.info("Before (findById) : -> Method: {} - Arguments: {} - Target: {}", joinPoint, joinPoint.getArgs(), joinPoint.getTarget());
 //    }
 
-//    //within
+    //within
 //    @Pointcut("within(com.myproject.controller..*)")
 //    private void anyControllerOperation(){}
 //
 //    @Pointcut("@within(org.springframework.stereotype.Service)")
 //    private void anyServiceOperation(){
 //    }
-
-
+//
+//
 //    @Before("anyControllerOperation() || anyServiceOperation()")
 //    public void beforeControllerAdvice(JoinPoint joinPoint){
 //        logger.info("Before () -> Method : {} - Arguments : {} - Target: {}", joinPoint, joinPoint.getArgs(), joinPoint.getTarget());
 //    }
-//
+
 
 //    @Pointcut("@annotation(org.springframework.web.bind.annotation.DeleteMapping)")
 //    private void anyDeleteCourseOperation(){}
@@ -59,8 +59,8 @@ public class LoggingAspect {
 //    public void beforeControllerAdvice(JoinPoint joinPoint){
 //        logger.info("Before -> Method : {} - Arguments : {} - Target: {}", joinPoint, joinPoint.getArgs(), joinPoint.getTarget());
 //    }
-    @Pointcut("@annotation(org.springframework.web.bind.annotation.GetMapping)")
-    private void anyGetCourseOperation(){}
+//    @Pointcut("@annotation(org.springframework.web.bind.annotation.GetMapping)")
+//    private void anyGetCourseOperation(){}
 
 //    @AfterReturning(pointcut = "anyGetCourseOperation()", returning = "result")
 //    public void afterReturningControllerAdvice(JoinPoint joinPoint, Object result){
@@ -82,20 +82,20 @@ public class LoggingAspect {
 //        logger.info("After finally -> Method : {}", joinPoint.getSignature().toShortString());
 //    }
 
-    @Pointcut("@annotation(com.myproject.annotation.Loggable)")
-    private void anyLoggableMethodOperation(){}
-
-    @Around("anyLoggableMethodOperation()")
-    public Object anyLoggableMethodOperationAdvice(ProceedingJoinPoint proceedingJoinPoint){
-        logger.info("Before () -> Method : {} - Parameters: {}", proceedingJoinPoint.getSignature().toShortString(), proceedingJoinPoint.getArgs());
-        Object results = null;
-        try {
-            results =proceedingJoinPoint.proceed();
-        } catch (Throwable e) {
-            e.printStackTrace();
-        }
-        logger.info("After -> Method: {} - Results: {}", proceedingJoinPoint.getSignature().toShortString(),results.toString());
-        return results;
-    }
+//    @Pointcut("@annotation(com.myproject.annotation.Loggable)")
+//    private void anyLoggableMethodOperation(){}
+//
+//    @Around("anyLoggableMethodOperation()")
+//    public Object anyLoggableMethodOperationAdvice(ProceedingJoinPoint proceedingJoinPoint){
+//        logger.info("Before () -> Method : {} - Parameters: {}", proceedingJoinPoint.getSignature().toShortString(), proceedingJoinPoint.getArgs());
+//        Object results = null;
+//        try {
+//            results =proceedingJoinPoint.proceed();
+//        } catch (Throwable e) {
+//            e.printStackTrace();
+//        }
+//        logger.info("After -> Method: {} - Results: {}", proceedingJoinPoint.getSignature().toShortString(),results.toString());
+//        return results;
+//    }
 
 }
